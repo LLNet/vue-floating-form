@@ -24,14 +24,13 @@
     >
       <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
     </svg>
-    <Label />
+    <Label :label="label" />
   </div>
 </template>
 <script setup>
 import {ref} from "vue";
-import {useActiveElement} from "@vueuse/core";
+import {useActiveElement, useVModel} from "@vueuse/core";
 import Label from "./Label.vue";
-const value = ref(null);
 const selectItem = ref(null);
 const activeElement = useActiveElement()
 
@@ -44,6 +43,17 @@ const props = defineProps({
   emptyValue : {
     type: String,
     default: null
+  },
+  modelValue: {
+    type: String,
+    default: ''
+  },
+  modelModifiers: {
+    type: Object,
+    default: () => ({})
   }
 });
+
+const emit = defineEmits(['update:modelValue'])
+const value = useVModel(props, 'modelValue', emit)
 </script>

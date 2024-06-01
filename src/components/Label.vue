@@ -3,9 +3,14 @@
       for="floating_standard"
       class="label"
   >
-    Floating standard
+    {{ label }}
   </label>
 </template>
 <script setup>
-
+defineProps({
+  label: {
+    type: String,
+    default: 'Floating standard'
+  }
+})
 </script>
