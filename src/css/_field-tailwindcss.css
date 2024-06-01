@@ -1,0 +1,44 @@
+@layer components {
+    .floating-field{
+        @apply relative z-0 h-fit;
+    }
+
+    .floating-field .input{
+        @apply block rounded-t-lg px-2.5 pb-2.5 pt-6 w-full
+        text-sm text-gray-900 bg-gray-50
+        border-0 border-b-2 border-gray-300
+        appearance-none outline-none ring-0;
+    }
+
+    .floating-field .label, .floating-field .input{
+        @apply text-sm font-mono;
+    }
+
+    .floating-field .label{
+        @apply appearance-none select-none;
+    }
+    .floating-field .input:placeholder-shown ~ .label,
+    .floating-field.empty label{
+        @apply translate-y-0 scale-100;
+    }
+    .floating-field .input:focus ~ .label{
+        @apply scale-75 -translate-y-4 text-blue-600;
+    }
+
+    .floating-field .label{
+        @apply absolute text-sm text-gray-500
+        duration-300 transform -translate-y-3.5 scale-75 top-4 z-10 origin-[0]
+        start-2.5;
+    }
+
+    .floating-field > svg{
+        @apply absolute top-4 right-0 size-5;
+    }
+
+    .floating-field > svg.select{
+        @apply right-2 appearance-none;
+    }
+    .floating-field > svg.clear{
+        @apply right-7 cursor-pointer;
+    }
+}
