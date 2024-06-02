@@ -6,6 +6,7 @@ import * as path from "path";
 export default defineConfig({
   plugins: [vue()],
   build:{
+    copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, 'lib/main.js'),
       name: 'FloatingForm',
