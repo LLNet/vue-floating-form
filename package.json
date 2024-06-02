@@ -28,7 +28,12 @@
     ".": {
       "import": "./dist/main.js",
       "require": "./dist/main.cjs"
-    }
+    },
+    "./*": {
+        "import": "./dist/*.js",
+        "require": "./dist/*.cjs"
+    },
+    "./css/style.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",

@@ -1,58 +1,56 @@
-@layer components {
-    .floating-default{
-        @apply relative z-0;
-    }
-    .floating-default .input:focus ~ label,
-    .floating-default.selected .input ~ label,
-    .floating-default .input:not(select):not(:placeholder-shown) ~ label{
-        @apply transform scale-75 -translate-y-6;
-    }
-    .label, .input{
-        @apply text-sm font-mono;
-    }
+.floating-default{
+    @apply relative z-0;
+}
+.floating-default .input:focus ~ label,
+.floating-default.selected .input ~ label,
+.floating-default .input:not(select):not(:placeholder-shown) ~ label{
+    @apply transform scale-75 -translate-y-6;
+}
+.label, .input{
+    @apply text-sm font-mono;
+}
 
-    .floating-default .input:focus ~ label,
-    .floating-default .select:focus ~ label {
-        @apply text-black left-0;
-    }
+.floating-default .input:focus ~ label,
+.floating-default .select:focus ~ label {
+    @apply text-black left-0;
+}
 
-    .floating-default > .label{
-        @apply absolute duration-300 top-3 z-[-1] origin-[0] text-gray-500;
-    }
-    /** pt-3 pb-2 = py-2.5 */
-    .floating-default > .input{
-        @apply pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2
-        appearance-none outline-none;
-    }
-    .floating-default > .input:focus{
-        @apply outline-none ring-0 border-black border-gray-800;
-    }
-    .floating-default > svg{
-        @apply absolute top-3 right-0 size-5;
-    }
+.floating-default > .label{
+    @apply absolute duration-300 top-3 z-[-1] origin-[0] text-gray-500;
+}
+/** pt-3 pb-2 = py-2.5 */
+.floating-default > .input{
+    @apply pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2
+    appearance-none outline-none;
+}
+.floating-default > .input:focus{
+    @apply outline-none ring-0 border-black border-gray-800;
+}
+.floating-default > svg{
+    @apply absolute top-3 right-0 size-5;
+}
 
-    .floating-default > svg.select{
-        @apply right-0 appearance-none;
-    }
-    .floating-default > svg.clear{
-        @apply right-4 cursor-pointer;
-    }
+.floating-default > svg.select{
+    @apply right-0 appearance-none;
+}
+.floating-default > svg.clear{
+    @apply right-4 cursor-pointer;
+}
 
-    .floating-default .editor{
-        @apply block w-full
-        border border-gray-300
-        text-sm text-gray-900 bg-white;
-    }
-    .floating-default .editor.focus{
-        @apply border-gray-900
-    }
-    .floating-default .editor > .ql-toolbar{
-        @apply border-0 border-b-2 border-t flex bg-white flex justify-center items-center;
-    }
-    .floating-default .editor > .ql-container{
-        @apply border-0 rounded-b-lg;
-    }
-    .floating-default .editor .ql-editor{
-        @apply p-2.5 min-h-36;
-    }
+.floating-default .editor{
+    @apply block w-full
+    border border-gray-300
+    text-sm text-gray-900 bg-white;
+}
+.floating-default .editor.focus{
+    @apply border-gray-900
+}
+.floating-default .editor > .ql-toolbar{
+    @apply border-0 border-b-2 border-t flex bg-white flex justify-center items-center;
+}
+.floating-default .editor > .ql-container{
+    @apply border-0 rounded-b-lg;
+}
+.floating-default .editor .ql-editor{
+    @apply p-2.5 min-h-36;
 }
