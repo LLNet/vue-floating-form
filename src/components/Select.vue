@@ -1,14 +1,23 @@
 <template>
-  <div class="floating-field" :class="emptyValue === value ? 'empty' : 'selected'">
+  <div class="floating-default" :class="emptyValue === value ? 'empty' : 'selected'">
     <select
       ref="selectItem"
       class="input"
       v-model="value"
       placeholder=" "
     >
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
+      <DefineTemplate v-slot="{options}">
+        <option v-for="option in options" :value="option.value" :key="option.value">
+          {{ option.label }}
+        </option>
+      </DefineTemplate>
+      <optgroup v-if="noneGroupedLabel !== null" :label="noneGroupedLabel">
+        <ReuseTemplate :options="options.options.filter((option) => option.group === null)" />
+      </optgroup>
+      <ReuseTemplate e-else :options="options.options.filter((option) => option.group === null)" />
+      <optgroup v-for="group in options.groups" :label="group">
+        <ReuseTemplate :options="options.options.filter((option) => option.group === group)" />
+      </optgroup>
     </select>
     <svg class="select" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -28,11 +37,11 @@
   </div>
 </template>
 <script setup>
-import {ref} from "vue";
-import {useActiveElement, useVModel} from "@vueuse/core";
+import {computed, ref} from "vue";
+import {useActiveElement, useVModel, useTemplateRefsList, createReusableTemplate} from "@vueuse/core";
 import Label from "./Label.vue";
 const selectItem = ref(null);
-const activeElement = useActiveElement()
+const activeElement = useActiveElement();
 
 
 const props = defineProps({
@@ -51,9 +60,56 @@ const props = defineProps({
   modelModifiers: {
     type: Object,
     default: () => ({})
+  },
+  options: {
+    type: [Array, Object],
+    default: () => []
+  },
+  noneGroupedLabel: {
+    type: String,
+    default: null
   }
 });
 
 const emit = defineEmits(['update:modelValue'])
-const value = useVModel(props, 'modelValue', emit)
+const value = useVModel(props, 'modelValue', emit);
+const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
+
+const options = computed(() => {
+  let tmp = [];
+  let groups = [];
+  let isArray = Array.isArray(props.options);
+  let isObject = typeof props.options === 'object';
+
+  if(!isObject){
+    return {options: [], groups: []};
+  }
+
+  const options = isArray ? props.options : Object.entries(props.options);
+
+  options.forEach((arg, index) => {
+    const {key, value} = (isArray ?
+            {key: index, value: arg} :
+            {key: arg[0], value: arg[1]}
+    );
+
+    if (typeof value !== 'object'){
+      tmp.push(isArray ?
+          {label: value, value: value, group: null} :
+          {label: value, value: key, group: null}
+      );
+    } else if (typeof value === 'object'){
+      tmp.push({value: (value?.value ?? key), label: (value?.label ?? key), group: (value?.group ?? null)});
+
+      if(value?.group && !groups.includes(value.group)){
+        groups.push(value.group);
+      }
+    }
+  });
+
+  return {
+    options: tmp,
+    groups: groups
+  };
+});
 </script>
