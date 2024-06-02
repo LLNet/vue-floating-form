@@ -37,4 +37,22 @@
     .floating-default > svg.clear{
         @apply right-4 cursor-pointer;
     }
+
+    .floating-default .editor{
+        @apply block w-full
+        border border-gray-300
+        text-sm text-gray-900 bg-white;
+    }
+    .floating-default .editor.focus{
+        @apply border-gray-900
+    }
+    .floating-default .editor > .ql-toolbar{
+        @apply border-0 border-b-2 border-t flex bg-white flex justify-center items-center;
+    }
+    .floating-default .editor > .ql-container{
+        @apply border-0 rounded-b-lg;
+    }
+    .floating-default .editor .ql-editor{
+        @apply p-2.5 min-h-36;
+    }
 }
