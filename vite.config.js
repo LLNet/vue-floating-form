@@ -9,15 +9,22 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'lib/main.js'),
       name: 'FloatingForm',
+      formats: ["es", "cjs", "umd"],
       fileName: (format) => `vue-floating-form.${format}.js`,
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'quill'],
       output: {
           globals: {
-              vue: 'Vue',
+            vue: 'Vue',
+            quill: 'Quill'
           }
       }
     }
-  }
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
 })
