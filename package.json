@@ -1,7 +1,7 @@
 {
   "name": "llnet-vue-floating-form",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type": "module",
   "author": "LLNet",
   "files": [
@@ -22,12 +22,12 @@
     "vuejs",
     "floating-form"
   ],
-  "main": "./dist/vue-floating-form.umd.js",
-  "module": "./dist/vue-floating-form.es.js",
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-floating-form.es.js",
-      "require": "./dist/vue-floating-form.umd.js"
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
     }
   },
   "scripts": {

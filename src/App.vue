@@ -1,5 +1,5 @@
 <script setup>
-import Text from './components/Text.vue';
+import {Text} from '$/text';
 import Select from "./components/Select.vue";
 import Textarea from "./components/Textarea.vue";
 import {ref} from "vue";
