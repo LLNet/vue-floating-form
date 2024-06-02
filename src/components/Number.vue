@@ -1,5 +1,5 @@
 <template>
-  <div class="floating-field" :class="value?.length === 0 ? 'empty':'has-content'">
+  <div class="floating-default" :class="value?.length === 0 ? 'empty':'has-content'">
     <input
       type="text"
       class="input"
@@ -7,6 +7,7 @@
       v-model="value"
       v-bind="modelModifiers"
       @input="($event) => onlyNumbers($event)"
+      inputmode="numeric"
     />
     <Label :label="label" />
   </div>
@@ -22,8 +23,8 @@ const props = defineProps({
     default: 'Floating standard'
   },
   modelValue: {
-    type: String,
-    default: ''
+    type: [String, Number],
+    default: null
   },
   modelModifiers: {
     type: Object,
@@ -37,13 +38,18 @@ const props = defineProps({
 });
 const emit = defineEmits(['update:modelValue'])
 const value = computed({
-  get: () => (typeof props.modelValue === "number" || props.modelValue === null ? Number(props.modelValue) : null),
+  get: () => (typeof props.modelValue === "number" || props.modelValue !== null ? Number(props.modelValue) : null),
   set: (value) => {
     if (props.format === 'int') {
       value = parseInt(value);
     } else if (props.format === 'float') {
       value = parseFloat(value);
     }
+
+    if(isNaN(value)) {
+      value = null;
+    }
+
     emit('update:modelValue', value);
   }
 });
