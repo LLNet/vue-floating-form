@@ -1,5 +1,5 @@
 <template>
-  <div class="floating-default" :class="emptyValue === value ? 'empty' : 'selected'">
+  <div class="floating-field" :class="emptyValue === value ? 'empty' : 'selected'">
     <select
       ref="selectItem"
       class="input"

@@ -1,5 +1,5 @@
 <template>
-  <div class="floating-default" :class="value?.length === 0 ? 'empty':'has-content'">
+  <div class="floating-field" :class="value?.length === 0 ? 'empty':'has-content'">
     <textarea
       class="input"
       placeholder=" "

@@ -1,5 +1,5 @@
 <template>
-  <div class="floating-default">
+  <div class="floating-field">
     <div class="editor">
       <div ref="editor">
       </div>
