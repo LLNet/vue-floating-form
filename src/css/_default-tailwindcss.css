@@ -3,7 +3,7 @@
 }
 .floating-default .input:focus ~ label,
 .floating-default.selected .input ~ label,
-.floating-default .input:not(select):not(:placeholder-shown) ~ label{
+.floating-default .input:where(input,textarea):not(:placeholder-shown) ~ label{
     @apply transform scale-75 -translate-y-6;
 }
 .label, .input{
@@ -15,7 +15,8 @@
     @apply text-black left-0;
 }
 
-.floating-default > .label{
+.floating-default > .label,
+.floating-default.empty > .label{
     @apply absolute duration-300 top-3 z-[-1] origin-[0] text-gray-500;
 }
 /** pt-3 pb-2 = py-2.5 */
@@ -23,7 +24,8 @@
     @apply pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2
     appearance-none outline-none;
 }
-.floating-default > .input:focus{
+.floating-default > .input:focus,
+.floating-default.focus > .input{
     @apply outline-none ring-0 border-black border-gray-800;
 }
 .floating-default > svg{
@@ -36,7 +38,9 @@
 .floating-default > svg.clear{
     @apply right-4 cursor-pointer;
 }
-
+/**
+ * Quill Editor
+ */
 .floating-default .editor{
     @apply block w-full
     border border-gray-300
@@ -53,4 +57,49 @@
 }
 .floating-default .editor .ql-editor{
     @apply p-2.5 min-h-36;
+}
+/**
+ * Select 2 version 1 build on headlessui from tailwind.
+ */
+
+.floating-default.select2{
+    @apply z-[2];
+}
+.floating-default.select2 .input{}
+.floating-default.select2 .input > button{
+    @apply relative w-full cursor-pointer text-left outline-none;
+}
+.floating-default.select2 .input > button > span{
+    @apply block;
+}
+.floating-default.select2 .input > ul{
+    @apply absolute  mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm;
+}
+.floating-default.select2 .input > ul > li{
+    @apply relative cursor-default select-none py-2 pl-10 pr-4;
+    @apply text-gray-900
+}
+.floating-default.select2 .input > ul > li.active{
+    @apply bg-amber-100 text-amber-900;
+}
+.floating-default.select2 .input > ul > li > .label{
+    @apply block truncate font-normal;
+}
+.floating-default.select2 .input > ul > li > .label.selected{
+    @apply font-medium;
+}
+.floating-default.select2 .input > ul > li > .icon{
+    @apply absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600;
+}
+.floating-default.select2 .input > ul > li > .icon > svg{
+    @apply size-4;
+}
+.floating-default.select2 .transition_active{
+    @apply transition duration-100 ease-in;
+}
+.floating-default.select2 .transition_from{
+    @apply opacity-100;
+}
+.floating-default.select2 .transition_to{
+    @apply opacity-0;
 }

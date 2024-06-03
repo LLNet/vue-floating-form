@@ -30,8 +30,8 @@
       "require": "./dist/main.cjs"
     },
     "./*": {
-        "import": "./dist/*.js",
-        "require": "./dist/*.cjs"
+      "import": "./dist/*.js",
+      "require": "./dist/*.cjs"
     },
     "./css/style.css": "./dist/style.css"
   },
@@ -40,17 +40,20 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.22",
+    "@vueuse/core": "^10.10.0"
+  },
   "peerDependencies": {
     "@vueuse/core": "^10.10.0"
   },
   "devDependencies": {
-    "vue": "^3.4.21",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "quill": "^2.0.2",
-    "@vueuse/components": "^10.10.0",
     "tailwindcss": "^3.4.3",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "vue": "^3.4.21"
   }
 }
