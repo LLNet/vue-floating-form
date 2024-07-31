@@ -31,12 +31,21 @@
 .floating-default > svg{
     @apply absolute top-3 right-0 size-5;
 }
+.floating-default > svg.info{
+    @apply right-0 cursor-pointer;
+}
 
 .floating-default > svg.select{
     @apply right-0 appearance-none;
 }
+.floating-default.has-info > svg.select{
+    @apply right-5;
+}
 .floating-default > svg.clear{
     @apply right-4 cursor-pointer;
+}
+.floating-default.has-info > svg.clear{
+    @apply right-9;
 }
 /**
  * Quill Editor

@@ -1,8 +1,15 @@
 <template>
   <div
     ref="selectElement"
-    class="floating-field select2"
-    :class="{ focus: focusin, empty: value === emptyValue, selected: value !== emptyValue}"
+    class="select2"
+    :class="{
+      focus: focusin,
+      empty: (value === emptyValue),
+      selected: (value !== emptyValue),
+      'has-info': info,
+      'floating-field': (layout === 'floating-field'),
+      'floating-default': (layout === 'floating-default')
+    }"
     @click.passive="staticValue = !staticValue"
     @focusin.passive="focusin = true"
     @focusout.passive="focusin = false"
@@ -54,6 +61,7 @@
       </div>
     </Listbox>
     <Label :label="label" class="z-20 block" />
+    <InfoIcon v-if="info" :info="info" :wrapperEl="selectElement" :value="value" />
     <svg class="select" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
@@ -82,6 +90,11 @@ import {
 } from '@headlessui/vue'
 import Label from "@/components/Label.vue";
 import {useVModel} from "@vueuse/core";
+import InfoIcon from "./InfoIcon.vue";
+
+const wrapperEl = ref(null);
+const inputEl   = ref(null);
+const infoEl    = ref(null);
 
 const props = defineProps({
   label: {
@@ -103,6 +116,19 @@ const props = defineProps({
   multiple: {
     type: Boolean,
     default: false
+  },
+  info: {
+    type: Function,
+    default: null
+  },
+  infoMessage: {
+    type: String,
+    default: ''
+  },
+  layout: {
+    type: String,
+    default: 'floating-field',
+    validator: (value) => ['floating-field', 'floating-default'].includes(value)
   }
 });
 

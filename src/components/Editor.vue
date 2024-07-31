@@ -1,5 +1,5 @@
 <template>
-  <div class="floating-field">
+  <div :class="layout">
     <div class="editor">
       <div ref="editor">
       </div>
@@ -27,7 +27,12 @@ const props = defineProps({
   contentType: {
     type: String,
     default: 'html'
-  }
+  },
+  layout: {
+    type: String,
+    default: 'floating-field',
+    validator: (value) => ['floating-field', 'floating-default'].includes(value)
+  },
 });
 
 function setContent(value) {

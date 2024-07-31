@@ -49,12 +49,22 @@
 .floating-field > svg{
     @apply absolute top-4 right-0 size-5;
 }
+.floating-field > svg.info{
+    @apply right-2 cursor-pointer;
+}
 
 .floating-field > svg.select{
     @apply right-2 appearance-none;
 }
+.floating-field.has-info > svg.select{
+    @apply right-7 cursor-pointer;
+}
+
 .floating-field > svg.clear{
     @apply right-7 cursor-pointer;
+}
+.floating-field.has-info > svg.clear{
+    @apply right-12 cursor-pointer;
 }
 
 .floating-field.select2{

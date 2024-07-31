@@ -1,5 +1,12 @@
 <template>
-  <div class="floating-field" :class="emptyValue === value ? 'empty' : 'selected'">
+  <div
+      :class="[
+          emptyValue === value ? 'empty' : 'selected',
+          layout === 'floating-field' ? 'floating-field':'floating-default',
+          info ? 'has-info' : undefined
+      ]"
+      ref="wrapperEl"
+  >
     <select
       ref="selectItem"
       class="input"
@@ -19,6 +26,13 @@
         <ReuseTemplate :options="options.options.filter((option) => option.group === group)" />
       </optgroup>
     </select>
+    <InfoIcon
+        v-if="info"
+        :info="info"
+        :value="value"
+        :input-el="selectItem"
+        :wrapper-el="wrapperEl"
+    />
     <svg class="select" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
@@ -40,9 +54,13 @@
 import {computed, ref} from "vue";
 import {useActiveElement, useVModel, useTemplateRefsList, createReusableTemplate} from "@vueuse/core";
 import Label from "./Label.vue";
+import InfoIcon from "./InfoIcon.vue";
 const selectItem = ref(null);
 const activeElement = useActiveElement();
 
+const wrapperEl = ref(null);
+const inputEl   = ref(null);
+const infoEl    = ref(null);
 
 const props = defineProps({
   label: {
@@ -68,6 +86,19 @@ const props = defineProps({
   noneGroupedLabel: {
     type: String,
     default: null
+  },
+  info: {
+    type: Function,
+    default: null
+  },
+  infoMessage: {
+    type: String,
+    default: ''
+  },
+  layout: {
+    type: String,
+    default: 'floating-field',
+    validator: (value) => ['floating-field', 'floating-default'].includes(value)
   }
 });
 

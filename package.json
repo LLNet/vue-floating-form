@@ -1,7 +1,7 @@
 {
   "name": "llnet-vue-floating-form",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.6",
   "type": "module",
   "author": "LLNet",
   "files": [
@@ -48,6 +48,7 @@
     "@vueuse/core": "^10.10.0"
   },
   "devDependencies": {
+    "@floating-ui/vue": "^1.1.2",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
