@@ -29,6 +29,7 @@
     <InfoIcon
         v-if="info"
         :info="info"
+        :message="infoMessage"
         :value="value"
         :input-el="selectItem"
         :wrapper-el="wrapperEl"

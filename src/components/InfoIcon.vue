@@ -6,7 +6,6 @@
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       ref="infoEl"
-      @title="infoMessage"
       @click="show = !show"
       @mouseenter="show = true"
       @mouseleave="show = false"
@@ -25,7 +24,7 @@ const props = defineProps({
     type: Function,
     default: null
   },
-  infoMessage: {
+  message: {
     type: String,
     default: ''
   },
@@ -44,6 +43,6 @@ const props = defineProps({
 });
 
 watch(() => show.value, (status) => {
-  props.info({status, target: infoEl.value, wrapperElement: props.wrapperEl, inputElement: props.inputEl, value:props.value, infoMessage:props.infoMessage})
+  props.info({status, target: infoEl.value, wrapperElement: props.wrapperEl, inputElement: props.inputEl, value:props.value, message:props.message})
 });
 </script>

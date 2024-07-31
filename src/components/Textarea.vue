@@ -20,6 +20,7 @@
         :input-el="inputEl"
         :wrapper-el="wrapperEl"
         :value="value"
+        :message="infoMessage"
     />
     <slot />
   </div>

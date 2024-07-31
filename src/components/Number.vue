@@ -21,7 +21,10 @@
     <InfoIcon
         v-if="info"
         :info="info"
-        :select-item
+        :input-el="inputEl"
+        :wrapper-el="wrapperEl"
+        :value="value"
+        :message="infoMessage"
     />
   </div>
 </template>
