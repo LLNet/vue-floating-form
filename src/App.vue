@@ -17,13 +17,15 @@ const form = ref({
 });
 const layout = ref('floating-field');
 const events = ref([]);
-
-function info(ob) {
-  reference.value = ob.status ? ob.target : null;
-  events.value.push(ob.target);
-}
-
 const reference = ref(null);
+const referenceObject = ref(null);
+
+const info = ref(null);
+//function info(ob) {
+//  reference.value = ob.status ? ob.target : null;
+//  referenceObject.value = ob;
+//}
+
 const floating = ref(null);
 
 const {floatingStyles} = useFloating(reference, floating, {
@@ -59,7 +61,7 @@ const {floatingStyles} = useFloating(reference, floating, {
     <Editor v-model="form.message" :layout="layout" />
     <Editor v-model="form.name" content-type="text" :layout="layout"/>
     <div v-if="reference" ref="floating" :style="floatingStyles">
-      Test
+      {{ referenceObject }}
     </div>
   </div>
 </template>
