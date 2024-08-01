@@ -66,8 +66,7 @@ const {floatingStyles} = useFloating(reference, floating, {
     </Textarea>
     <Editor v-model="form.message" :layout="layout" />
     <Editor v-model="form.name" content-type="text" :layout="layout"/>
-    <Toggle v-model="form.name"         :info="info"
-            info-message="tester" />
+    <Toggle v-model="form.name" />
     <div v-if="reference" ref="floating" :style="floatingStyles">
       {{ referenceObject }}
     </div>

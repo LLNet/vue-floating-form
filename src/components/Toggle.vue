@@ -53,7 +53,7 @@ const props = defineProps({
   },
   info: {
     type: Function,
-    default: () => null
+    default: null
   },
   infoMessage: {
     type: String,
