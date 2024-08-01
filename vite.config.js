@@ -14,6 +14,7 @@ export default defineConfig({
         number: path.resolve(__dirname, 'lib/number.js'),
         textarea: path.resolve(__dirname, 'lib/textarea.js'),
         select: path.resolve(__dirname, 'lib/select.js'),
+        select2: path.resolve(__dirname, 'lib/select2.js'),
         editor: path.resolve(__dirname, 'lib/editor.js'),
         toggle: path.resolve(__dirname, 'lib/toggle.js'),
       },
