@@ -67,7 +67,7 @@
     </svg>
     <!-- reset svg -->
     <svg
-        v-if="value !== emptyValue"
+        v-if="enableEmptyValue && value !== emptyValue"
         @click="value = emptyValue"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -104,6 +104,10 @@ const props = defineProps({
   emptyValue : {
     type: [String, Number],
     default: null
+  },
+  enableEmptyValue: {
+    type: Boolean,
+    default: false
   },
   modelValue: {
     type: [String, Number],
