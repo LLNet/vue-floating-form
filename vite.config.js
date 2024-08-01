@@ -15,6 +15,7 @@ export default defineConfig({
         textarea: path.resolve(__dirname, 'lib/textarea.js'),
         select: path.resolve(__dirname, 'lib/select.js'),
         editor: path.resolve(__dirname, 'lib/editor.js'),
+        toggle: path.resolve(__dirname, 'lib/toggle.js'),
       },
       formats: ['es', 'cjs'],
     },
