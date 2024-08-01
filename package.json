@@ -1,13 +1,14 @@
 {
   "name": "llnet-vue-floating-form",
   "private": false,
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
   "author": "LLNet",
   "files": [
     "dist",
     "src/css/_default-tailwindcss.css",
-    "src/css/_field-tailwindcss.css"
+    "src/css/_field-tailwindcss.css",
+    "src/css/_toggle-tailwindcss.css"
   ],
   "repository": {
     "type": "git",
