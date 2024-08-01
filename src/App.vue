@@ -7,6 +7,7 @@ import Number from "./components/Number.vue";
 import Editor from "./components/Editor.vue";
 import Select2 from "@/components/Select2.vue";
 import {flip, offset, shift, useFloating} from "@floating-ui/vue";
+import Toggle from "./components/Toggle.vue";
 
 const form = ref({
   name: '',
@@ -65,6 +66,8 @@ const {floatingStyles} = useFloating(reference, floating, {
     </Textarea>
     <Editor v-model="form.message" :layout="layout" />
     <Editor v-model="form.name" content-type="text" :layout="layout"/>
+    <Toggle v-model="form.name"         :info="info"
+            info-message="tester" />
     <div v-if="reference" ref="floating" :style="floatingStyles">
       {{ referenceObject }}
     </div>

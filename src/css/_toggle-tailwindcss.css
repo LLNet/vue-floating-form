@@ -1,0 +1,27 @@
+.floating-toggle {
+  @apply flex flex-row items-center;
+}
+.floating-toggle > div{
+    @apply relative inline-flex cursor-pointer items-center
+}
+.floating-toggle > div > div{
+    @apply h-4 w-12 rounded border bg-slate-200;
+}
+.floating-toggle.round > div > div{
+    @apply rounded-full;
+}
+.floating-toggle > div > div:after{
+    @apply absolute -top-1 left-0 h-6 w-6 rounded-md border border-gray-300 bg-white transition-all content-[''];
+}
+.floating-toggle.round > div > div:after{
+    @apply rounded-full;
+}
+.floating-toggle.checked > div:after > div{
+    @apply bg-green-300 translate-x-full ring-green-300;
+}
+.floating-toggle label{
+    @apply flex-1 text-sm text-gray-700;
+}
+.floating-toggle > svg{
+    @apply w-6 h-6 ml-2;
+}

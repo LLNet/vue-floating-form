@@ -1,5 +1,6 @@
 @import "_default-tailwindcss.css";
 @import "_field-tailwindcss.css";
+@import "_toggle-tailwindcss.css";
 
 @tailwind base;
 @tailwind components;
