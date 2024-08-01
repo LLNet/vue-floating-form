@@ -13,7 +13,7 @@
       <div class=""></div>
     </div>
     <label class="ml-2">{{ label }}</label>
-    <InfoIcon v-if="info" :value="value" :info="info" :input-el="inputEl" :wrapper-el="wrapperEl" />
+    <InfoIcon v-if="info" :value="value" :info="info" :input-el="inputEl" :wrapper-el="wrapperEl" :message="infoMessage" />
   </div>
 </template>
 <script setup>

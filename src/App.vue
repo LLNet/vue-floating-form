@@ -14,7 +14,8 @@ const form = ref({
   type: '',
   type2: [],
   message: '',
-  number: 0
+  number: 0,
+  tester: false
 });
 const layout = ref('floating-field');
 const events = ref([]);
@@ -42,14 +43,14 @@ const {floatingStyles} = useFloating(reference, floating, {
     <Number
         info-message="tester" :layout="layout" v-model="form.number" />
     <Select
-        info-message="tester" :layout="layout" v-model="form.type" :info="info" />
+        info-message="tester" :layout="layout" v-model="form.type" :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']" :info="info" />
     <Select2
         :info="info"
         info-message="tester"
         :layout="layout"
         v-model="form.type"
         :empty-value="''"
-        :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']"
+        :options="['1', {label:2, value:2, desc:'test'}, {label:2, value:2, group:'test', desc:'test'}, {label:3, desc:'test'}, '5']"
     />
     <Select2
         :layout="layout"
@@ -59,14 +60,24 @@ const {floatingStyles} = useFloating(reference, floating, {
         :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']"
         :info="info"
         info-message="tester"
-    />
+    >
+      <template #option="{option}">
+        <div class="flex flex-row items-center">
+          <div>{{ option.label }}</div>
+          <div class="ml-2 text-xs text-gray-500 flex items-center">
+            {{ option.desc }} i love to make cake
+            <img src="https://carads.io/_ipx/w_700&f_webp/images/samlet-v5.png" class="size-32" />
+          </div>
+        </div>
+      </template>
+    </Select2>
     <Textarea v-model.lazy="form.message" :info="info"
               info-message="tester" :layout="layout">
       <div>{{ form.message.length }} / 500</div>
     </Textarea>
     <Editor v-model="form.message" :layout="layout" />
     <Editor v-model="form.name" content-type="text" :layout="layout"/>
-    <Toggle v-model="form.name" />
+    <Toggle v-model="form.tester" :info="info" :info-message="'teser'" />
     <div v-if="reference" ref="floating" :style="floatingStyles">
       {{ referenceObject }}
     </div>
