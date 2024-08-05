@@ -1,5 +1,5 @@
 .floating-default{
-    @apply relative z-0;
+    @apply relative;
 }
 .floating-default .input:focus ~ label,
 .floating-default.selected .input ~ label,
@@ -86,7 +86,6 @@
  */
 
 .floating-default.select2{
-    @apply z-[2];
 }
 .floating-default.select2 .input{}
 .floating-default.select2 .input > button{
@@ -96,7 +95,8 @@
     @apply block;
 }
 .floating-default.select2 .input > ul{
-    @apply absolute  mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm;
+    @apply absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white;
+    @apply py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm;
 }
 .floating-default.select2 .input > ul > li{
     @apply relative cursor-default select-none py-2 pl-10 pr-4;
