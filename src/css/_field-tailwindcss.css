@@ -15,6 +15,14 @@
     @apply pr-8;
 }
 
+.floating-field textarea.input{
+    @apply resize-none;
+}
+
+.floating-field.has-resize textarea{
+    @apply resize-y;
+}
+
 .floating-field .editor{
     @apply block rounded-t-lg w-full
     border-0 border-b-2 border-gray-300
@@ -50,6 +58,7 @@
     @apply absolute text-sm text-gray-500
     duration-300 transform -translate-y-3.5 scale-75 top-4 z-10 origin-[0]
     start-2.5;
+    @apply bg-gray-50;
 }
 
 .floating-field > svg{

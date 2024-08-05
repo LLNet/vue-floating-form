@@ -10,6 +10,19 @@
     @apply text-sm font-mono;
 }
 
+.floating-default.has-info > input.input,
+.floating-default.has-info > textarea.input{
+    @apply pr-6;
+}
+
+.floating-default textarea.input{
+    @apply resize-none;
+}
+
+.floating-default.has-resize textarea{
+    @apply resize-y;
+}
+
 .floating-default .input:focus ~ label,
 .floating-default .select:focus ~ label {
     @apply text-black left-0;
@@ -17,7 +30,8 @@
 
 .floating-default > .label,
 .floating-default.empty > .label{
-    @apply absolute duration-300 top-3 z-[-1] origin-[0] text-gray-500;
+    @apply absolute duration-300 top-3 z-0 origin-[0] text-gray-500;
+    @apply bg-white;
 }
 /** pt-3 pb-2 = py-2.5 */
 .floating-default > .input{

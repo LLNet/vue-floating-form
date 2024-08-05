@@ -14,6 +14,7 @@ const form = ref({
   type: '',
   type2: [],
   message: '',
+  data: '',
   number: 0,
   tester: false
 });
@@ -42,8 +43,6 @@ const {floatingStyles} = useFloating(reference, floating, {
         info-message="tester" :layout="layout" v-model="form.name" :info="info" />
     <Number
         info-message="tester" :layout="layout" v-model="form.number" />
-    <Select
-        info-message="tester" :layout="layout" v-model="form.type" :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']" :info="info" />
     <Select2
         :info="info"
         info-message="tester"
@@ -51,7 +50,9 @@ const {floatingStyles} = useFloating(reference, floating, {
         v-model="form.type"
         :empty-value="''"
         :options="['1', {label:2, value:2, desc:'test'}, {label:2, value:2, group:'test', desc:'test'}, {label:3, desc:'test'}, '5']"
-    />
+    /><Select
+      info-message="tester" :layout="layout" v-model="form.type" :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']" :info="info" />
+
     <Select2
         :layout="layout"
         :multiple="true"
@@ -71,9 +72,9 @@ const {floatingStyles} = useFloating(reference, floating, {
         </div>
       </template>
     </Select2>
-    <Textarea v-model.lazy="form.message" :info="info"
+    <Textarea v-model.lazy="form.data" :info="info" :disable-paste="true"
               info-message="tester" :layout="layout">
-      <div>{{ form.message.length }} / 500</div>
+      <div>{{ form.data.length }} / 500</div>
     </Textarea>
     <Editor v-model="form.message" :layout="layout" />
     <Editor v-model="form.name" content-type="text" :layout="layout"/>
