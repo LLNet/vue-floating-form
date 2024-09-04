@@ -31,7 +31,7 @@
 .floating-default > .label,
 .floating-default.empty > .label{
     @apply absolute duration-300 top-3 z-0 origin-[0] text-gray-500;
-    @apply bg-white;
+    @apply bg-white pointer-events-none;
 }
 /** pt-3 pb-2 = py-2.5 */
 .floating-default > .input{

@@ -44,7 +44,7 @@
 }
 
 .floating-field > .label{
-    @apply appearance-none select-none;
+    @apply appearance-none select-none pointer-events-none;
 }
 .floating-field .input:placeholder-shown ~ .label,
 .floating-field.empty label{
