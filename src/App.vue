@@ -8,6 +8,7 @@ import Editor from "./components/Editor.vue";
 import Select2 from "@/components/Select2.vue";
 import {flip, offset, shift, useFloating} from "@floating-ui/vue";
 import Toggle from "./components/Toggle.vue";
+import Color from "@/components/Color.vue";
 
 const form = ref({
   name: '',
@@ -40,6 +41,8 @@ const {floatingStyles} = useFloating(reference, floating, {
     <button @click="layout = 'floating-field'">Floating Field</button>
     <button @click="layout = 'floating-default'">Floating Default</button>
     <Text
+        info-message="tester" :layout="layout" v-model="form.name" :info="info" />
+    <Color
         info-message="tester" :layout="layout" v-model="form.name" :info="info" />
     <Number
         info-message="tester" :layout="layout" v-model="form.number" />

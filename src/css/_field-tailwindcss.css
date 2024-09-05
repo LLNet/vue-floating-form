@@ -67,6 +67,10 @@
 .floating-field > svg.info{
     @apply right-2 cursor-pointer;
 }
+.floating-field > .show-color{
+    @apply absolute top-4 right-9 size-5 bg-amber-300 rounded-full border-2 border-gray-800;
+    background-color: var(--show-color, transparent);
+}
 
 .floating-field > svg.select{
     @apply right-2 appearance-none;
@@ -83,6 +87,9 @@
 }
 
 .floating-field.select2{
+}
+.floating-field.color > input{
+    @apply absolute invisible inset-0 w-fit;
 }
 
 .floating-field.select2 > .label{

@@ -17,6 +17,7 @@ export default defineConfig({
         select2: path.resolve(__dirname, 'lib/select2.js'),
         editor: path.resolve(__dirname, 'lib/editor.js'),
         toggle: path.resolve(__dirname, 'lib/toggle.js'),
+        color: path.resolve(__dirname, 'lib/color.js'),
       },
       formats: ['es', 'cjs'],
     },
