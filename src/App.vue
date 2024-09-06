@@ -41,11 +41,19 @@ const {floatingStyles} = useFloating(reference, floating, {
     <button @click="layout = 'floating-field'">Floating Field</button>
     <button @click="layout = 'floating-default'">Floating Default</button>
     <Text
-        info-message="tester" :layout="layout" v-model="form.name" :info="info" />
+        info-message="tester"
+        :layout="layout"
+        v-model="form.name"
+        :info="info"
+        placeholder="jeg elsker kage"
+        :list="'tester'"
+    />
     <Color
         info-message="tester" :layout="layout" v-model="form.name" :info="info" />
     <Number
-        info-message="tester" :layout="layout" v-model="form.number" />
+        info-message="tester" :layout="layout" v-model="form.number"
+        placeholder="2 + 2"
+    />
     <Select2
         :info="info"
         info-message="tester"
@@ -75,7 +83,7 @@ const {floatingStyles} = useFloating(reference, floating, {
         </div>
       </template>
     </Select2>
-    <Textarea v-model.lazy="form.data" :info="info" :disable-paste="true"
+    <Textarea placeholder="kage" v-model.lazy="form.data" :info="info" :disable-paste="true"
               info-message="tester" :layout="layout">
       <div>{{ form.data.length }} / 500</div>
     </Textarea>
@@ -85,5 +93,9 @@ const {floatingStyles} = useFloating(reference, floating, {
     <div v-if="reference" ref="floating" :style="floatingStyles">
       {{ referenceObject }}
     </div>
+    <datalist id="tester">
+      <option value="kage" />
+      <option value="kage2" />
+    </datalist>
   </div>
 </template>

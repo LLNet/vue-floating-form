@@ -3,7 +3,7 @@
 }
 .floating-default .input:focus ~ label,
 .floating-default.selected .input ~ label,
-.floating-default .input:where(input,textarea):not(:placeholder-shown) ~ label{
+.floating-default:not(.empty) .input ~ label{
     @apply transform scale-75 -translate-y-6;
 }
 .label, .input{
@@ -69,6 +69,10 @@
 .floating-default.color > input{
     @apply absolute invisible inset-0 w-fit;
 }
+.floating-default.color button.input{
+    text-align: left;
+}
+
 /**
  * Quill Editor
  */

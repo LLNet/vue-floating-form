@@ -2,7 +2,7 @@
   <div
       ref="wrapperEl"
       :class="[
-          value?.length === 0 ? 'empty':'has-content',
+          (value?.toString().length ?? 0) === 0 ? 'empty':'has-content',
           layout === 'floating-field' ? 'floating-field':'floating-default',
           info ? 'has-info':undefined
       ]"
@@ -11,7 +11,7 @@
       ref="inputEl"
       type="text"
       class="input"
-      placeholder=" "
+      :placeholder="placeholder"
       v-model="value"
       v-bind="modelModifiers"
       @input="($event) => onlyNumbers($event)"
@@ -68,6 +68,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  placeholder:{
+    type:String,
+    default: undefined,
+  }
 });
 const emit = defineEmits(['update:modelValue'])
 const value = computed({

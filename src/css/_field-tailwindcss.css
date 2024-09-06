@@ -6,7 +6,7 @@
     @apply block rounded-t-lg px-2.5 pb-2.5 pt-6 w-full
     text-sm text-gray-900 bg-gray-50
     border-0 border-b-2 border-gray-300
-    appearance-none outline-none ring-0;
+    appearance-none outline-none ring-0 placeholder-transparent;
 }
 
 
@@ -29,7 +29,7 @@
     text-sm text-gray-900 bg-gray-50;
 }
 .floating-field .editor > .ql-toolbar{
-    @apply border-0 rounded-t-lg border-b-2 flex bg-gray-50 flex justify-center items-center;
+    @apply border-0 rounded-t-lg border-b-2 bg-gray-50 flex justify-center items-center;
 }
 .floating-field .editor > .ql-container{
     @apply border-0 rounded-b-lg;
@@ -52,6 +52,9 @@
 }
 .floating-field .input:focus ~ .label{
     @apply scale-75 -translate-y-4 text-blue-600;
+}
+.floating-field .input:focus{
+    @apply placeholder-black/50;
 }
 
 .floating-field > .label{
@@ -90,6 +93,9 @@
 }
 .floating-field.color > input{
     @apply absolute invisible inset-0 w-fit;
+}
+.floating-field.color button.input{
+    text-align: left;
 }
 
 .floating-field.select2 > .label{

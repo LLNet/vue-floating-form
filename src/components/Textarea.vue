@@ -11,7 +11,7 @@
   >
     <textarea
       class="input"
-      placeholder=" "
+      :placeholder="placeholder"
       v-model="value"
       ref="textarea"
       :rows="rows"
@@ -94,6 +94,10 @@ const props = defineProps({
   resize:{
     type:Boolean,
     default: false
+  },
+  placeholder:{
+    type:String,
+    default: undefined,
   }
 });
 
