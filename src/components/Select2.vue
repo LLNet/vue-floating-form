@@ -79,6 +79,9 @@
       <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
     </svg>
   </div>
+  <pre>
+    {{ options }}
+  </pre>
 </template>
 
 <script setup>
@@ -168,7 +171,12 @@ const options = computed(() => {
           {label: value, value: key}
       );
     } else if (typeof value === 'object'){
-      tmp.push({value: (value?.value ?? key), label: (value?.label ?? key), desc: value?.desc ?? undefined});
+      tmp.push({
+        ...(typeof value === 'object' ? value : {}),
+        value: (value.hasOwnProperty('value') ? value.value : key),
+        label: (value?.hasOwnProperty('label') ? value.label : key),
+        desc: value?.desc ?? undefined}
+      );
     }
   });
 

@@ -135,7 +135,11 @@ const options = computed(() => {
           {label: value, value: key, group: null}
       );
     } else if (typeof value === 'object'){
-      tmp.push({value: (value?.value ?? key), label: (value?.label ?? key), group: (value?.group ?? null)});
+      tmp.push({
+        value: (value.hasOwnProperty('value') ? value.value : key),
+        label: (value?.hasOwnProperty('label') ? value.label : key),
+        group: (value?.group ?? null)
+      });
 
       if(value?.group && !groups.includes(value.group)){
         groups.push(value.group);

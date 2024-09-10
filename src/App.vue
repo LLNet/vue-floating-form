@@ -35,6 +35,39 @@ const {floatingStyles} = useFloating(reference, floating, {
   placement: 'top',
   middleware: [offset(10), flip(), shift()],
 });
+
+const icons = ref([
+  null,
+  'bolt',
+  'play',
+  'car',
+  'calendar',
+  'car_belt',
+  'chain',
+  'drivmiddel',
+  'funnel',
+  'gas_tank',
+  'gear_belt',
+  'geartype',
+  'hk',
+  'key',
+  'km_tal',
+  'lifter',
+  'oil',
+  'radiator',
+  'raekkevidde',
+  'rearview',
+  'santander',
+  'shift',
+  'shockbreaker',
+  'spark_plug',
+  'speedometer',
+  'spotlight',
+  'tire',
+  'tire_pump',
+  'wiper',
+].map(i => ({value:(i === null ? null : 'cc-icon-' + i), label:(i === null ? 'icon_empty' : i)})));
+
 </script>
 <template>
   <div class="grid grid-cols-2 gap-4 p-4 container mx-auto">
@@ -58,10 +91,20 @@ const {floatingStyles} = useFloating(reference, floating, {
         :info="info"
         info-message="tester"
         :layout="layout"
+        v-model="form.icon"
+        :empty-value="''"
+        :options="icons"
+    />
+    <Select2
+        :info="info"
+        info-message="tester"
+        :layout="layout"
         v-model="form.type"
         :empty-value="''"
         :options="['1', {label:2, value:2, desc:'test'}, {label:2, value:2, group:'test', desc:'test'}, {label:3, desc:'test'}, '5']"
-    /><Select
+    />
+
+    <Select
       info-message="tester" :layout="layout" v-model="form.type" :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']" :info="info" />
 
     <Select2
