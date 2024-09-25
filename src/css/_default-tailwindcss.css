@@ -6,7 +6,7 @@
 .floating-default:not(.empty) .input ~ label{
     @apply transform scale-75 -translate-y-6;
 }
-.label, .input{
+.floating-default .label, .floating-default .input{
     @apply text-sm;
     font-family: inherit !important;
 }

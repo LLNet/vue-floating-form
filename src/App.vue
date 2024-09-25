@@ -82,6 +82,14 @@ const icons = ref([
         placeholder="jeg elsker kage"
         :list="'tester'"
     />
+    <Text
+        info-message="tester"
+        :layout="layout"
+        v-model="form.name2"
+        :info="info"
+        placeholder="jeg elsker kage"
+        :list="'tester'"
+    />
     <Date :layout="layout" v-model="form.name" />
     <Select2
         :info="info"
