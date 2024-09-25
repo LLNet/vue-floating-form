@@ -18,6 +18,7 @@ export default defineConfig({
         editor: path.resolve(__dirname, 'lib/editor.js'),
         toggle: path.resolve(__dirname, 'lib/toggle.js'),
         color: path.resolve(__dirname, 'lib/color.js'),
+        date: path.resolve(__dirname, 'lib/date.js'),
       },
       formats: ['es', 'cjs'],
     },

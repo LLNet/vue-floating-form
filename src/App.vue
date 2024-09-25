@@ -9,6 +9,7 @@ import Select2 from "@/components/Select2.vue";
 import {flip, offset, shift, useFloating} from "@floating-ui/vue";
 import Toggle from "./components/Toggle.vue";
 import Color from "@/components/Color.vue";
+import Date from "@/components/Date.vue";
 
 const form = ref({
   name: '',
@@ -81,19 +82,20 @@ const icons = ref([
         placeholder="jeg elsker kage"
         :list="'tester'"
     />
-    <Color
-        info-message="tester" :layout="layout" v-model="form.name" :info="info" />
-    <Number
-        info-message="tester" :layout="layout" v-model="form.number"
-        placeholder="2 + 2"
-    />
+    <Date :layout="layout" v-model="form.name" />
     <Select2
         :info="info"
         info-message="tester"
         :layout="layout"
         v-model="form.icon"
         :empty-value="''"
-        :options="icons"
+        :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']"
+    />
+    <Color
+        info-message="tester" :layout="layout" v-model="form.name" :info="info" />
+    <Number
+        info-message="tester" :layout="layout" v-model="form.number"
+        placeholder="2 + 2"
     />
     <Select2
         :info="info"
@@ -140,5 +142,8 @@ const icons = ref([
       <option value="kage" />
       <option value="kage2" />
     </datalist>
+    <pre>
+      {{ form }}
+    </pre>
   </div>
 </template>
