@@ -40,7 +40,7 @@
 
 .floating-field > .label,
 .floating-field > .input{
-    @apply text-sm font-mono;
+    font-family: inherit !important;
 }
 
 .floating-field > .label{

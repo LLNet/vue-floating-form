@@ -7,7 +7,8 @@
     @apply transform scale-75 -translate-y-6;
 }
 .label, .input{
-    @apply text-sm font-mono;
+    @apply text-sm;
+    font-family: inherit !important;
 }
 
 .floating-default.has-info > input.input,

@@ -1,5 +1,6 @@
 .floating-toggle {
   @apply flex flex-row items-center;
+    font-family: inherit !important;
 }
 .floating-toggle > div{
     @apply relative inline-flex cursor-pointer items-center
