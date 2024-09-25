@@ -11,8 +11,7 @@ export default {
   plugins: [],
   /*important: '#app',*/
   corePlugins: {
-    /**
-     preflight: false, */
+     preflight: false,
   }
 }
 
