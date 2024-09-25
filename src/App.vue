@@ -92,7 +92,11 @@ const icons = ref([
         :options="['1', {label:2, value:2}, {label:2, value:2, group:'test'}, {label:3}, '5']"
     />
     <Color
-        info-message="tester" :layout="layout" v-model="form.name" :info="info" />
+        @change="events.push('change')"
+        @input="events.push('input')"
+        class="test"
+        info-message="tester" :layout="layout" v-model="form.name" :info="info"
+    />
     <Number
         info-message="tester" :layout="layout" v-model="form.number"
         placeholder="2 + 2"
@@ -128,8 +132,12 @@ const icons = ref([
         </div>
       </template>
     </Select2>
-    <Textarea placeholder="kage" v-model.lazy="form.data" :info="info" :disable-paste="true"
-              info-message="tester" :layout="layout">
+    <Textarea
+        placeholder="kage"
+        v-model.lazy="form.data"
+        :info="info"
+        :disable-paste="true"
+        info-message="tester" :layout="layout">
       <div>{{ form.data.length }} / 500</div>
     </Textarea>
     <Editor v-model="form.message" :layout="layout" />
@@ -143,7 +151,7 @@ const icons = ref([
       <option value="kage2" />
     </datalist>
     <pre>
-      {{ form }}
+      {{ events }}
     </pre>
   </div>
 </template>

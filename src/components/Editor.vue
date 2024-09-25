@@ -1,5 +1,7 @@
 <template>
-  <div :class="layout">
+  <div :class="layout"
+       v-bind="allowWrapperAttrs($attrs)"
+  >
     <div class="editor">
       <div ref="editor">
       </div>
@@ -10,9 +12,15 @@
 import Quill from "quill";
 import {onMounted, ref, watch} from "vue";
 import "quill/dist/quill.snow.css";
+import {allowWrapperAttrs} from "@/global.js";
 
 const editor = ref(null);
 const quill = ref(null);
+
+defineOptions({
+  inheritAttrs: false
+});
+
 let timeout = null;
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({

@@ -6,6 +6,7 @@
           layout === 'floating-field' ? 'floating-field':'floating-default',
           info ? 'has-info':undefined
       ]"
+      v-bind="allowWrapperAttrs($attrs)"
   >
     <input
       ref="inputEl"
@@ -33,9 +34,14 @@ import {useVModel} from "@vueuse/core";
 import Label from "./Label.vue";
 import {computed, ref} from "vue";
 import InfoIcon from "./InfoIcon.vue";
+import {allowWrapperAttrs} from "@/global.js";
 const wrapperEl = ref(null);
 const inputEl   = ref(null);
 const infoEl    = ref(null);
+
+defineOptions({
+  inheritAttrs: false
+})
 
 const props = defineProps({
   label: {

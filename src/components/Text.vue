@@ -6,6 +6,7 @@
         (info ? 'has-info':undefined)
       ]"
       ref="wrapperEl"
+      v-bind="allowWrapperAttrs($attrs)"
   >
     <input
       ref="inputEl"
@@ -16,6 +17,7 @@
       v-model="value"
       @focusin="showDataList = true"
       @focusout="showDataList = false"
+      v-bind="allowInputEvents($attrs, 'text')"
     />
     <Label :label="label" />
     <InfoIcon
@@ -26,16 +28,21 @@
       :value="value"
       :message="infoMessage"
     />
+    <datalist v-if="showDataList && dataList.length > 0" :id="dataListId">
+      <option v-for="value in dataList" :value="value" />
+    </datalist>
   </div>
-  <datalist v-if="showDataList && dataList.length > 0" :id="dataListId">
-    <option v-for="value in dataList" :value="value" />
-  </datalist>
 </template>
 <script setup>
 import {useVModel} from "@vueuse/core";
 import Label from "./Label.vue";
 import {computed, ref} from "vue";
 import InfoIcon from "./InfoIcon.vue";
+import {allowInputEvents, allowWrapperAttrs} from "@/global.js";
+
+defineOptions({
+  inheritAttrs: false
+})
 
 const wrapperEl = ref(null);
 const inputEl   = ref(null);

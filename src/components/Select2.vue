@@ -13,6 +13,7 @@
     @click.passive="staticValue = !staticValue"
     @focusin.passive="focusin = true"
     @focusout.passive="focusin = false"
+    v-bind="allowWrapperAttrs($attrs)"
   >
     <Listbox
       class="input"
@@ -93,6 +94,7 @@ import {
 import Label from "@/components/Label.vue";
 import {useVModel} from "@vueuse/core";
 import InfoIcon from "./InfoIcon.vue";
+import {allowWrapperAttrs} from "@/global.js";
 
 const wrapperEl = ref(null);
 const inputEl   = ref(null);

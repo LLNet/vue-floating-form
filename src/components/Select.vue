@@ -6,6 +6,7 @@
           info ? 'has-info' : undefined
       ]"
       ref="wrapperEl"
+      v-bind="allowWrapperAttrs($attrs)"
   >
     <select
       ref="selectItem"
@@ -56,6 +57,7 @@ import {computed, ref} from "vue";
 import {useActiveElement, useVModel, useTemplateRefsList, createReusableTemplate} from "@vueuse/core";
 import Label from "./Label.vue";
 import InfoIcon from "./InfoIcon.vue";
+import {allowWrapperAttrs} from "@/global.js";
 const selectItem = ref(null);
 const activeElement = useActiveElement();
 

@@ -6,7 +6,8 @@
         (rounded ? 'round':undefined),
       ]"
       ref="wrapperEl"
-      class="floating-toggle flex flex-row items-center"
+      class="floating-toggle"
+      v-bind="allowWrapperAttrs($attrs)"
   >
     <div @click="toggle">
       <input ref="inputEl" id="switch-3" type="checkbox" v-model="value" :value="yesValue" class="sr-only" />
@@ -21,6 +22,11 @@ import {useVModel} from "@vueuse/core";
 import Label from "./Label.vue";
 import {ref} from "vue";
 import InfoIcon from "./InfoIcon.vue";
+import {allowWrapperAttrs} from "@/global.js";
+
+defineOptions({
+  inheritAttrs: false
+})
 
 const wrapperEl = ref(null);
 const inputEl   = ref(null);

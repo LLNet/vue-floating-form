@@ -11,8 +11,7 @@
         :type="type"
         class="input"
         v-model="value"
-        @focusin="showDataList = true"
-        @focusout="showDataList = false"
+        v-bind="allowInputEvents($attrs, 'date')"
     />
     <Label :label="label" />
   </div>
@@ -22,11 +21,15 @@ import {useVModel} from "@vueuse/core";
 import Label from "./Label.vue";
 import {computed, ref} from "vue";
 import InfoIcon from "./InfoIcon.vue";
+import {allowInputEvents} from "@/global.js";
+
+defineOptions({
+  inheritAttrs: false
+})
 
 const wrapperEl = ref(null);
 const inputEl   = ref(null);
 const infoEl    = ref(null);
-const showDataList = ref(false);
 
 const props = defineProps({
   label: {

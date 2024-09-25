@@ -8,6 +8,7 @@
         (disabled ? 'is-disabled':undefined),
         (resize ? 'has-resize':undefined),
       ]"
+      v-bind="allowWrapperAttrs($attrs)"
   >
     <textarea
       class="input"
@@ -19,6 +20,7 @@
       :disabled="disabled"
       @keypress="maxRowsKeyPress"
       @paste="afterPaste"
+      v-bind="allowInputEvents($attrs, 'textarea')"
     />
     <Label :label="label" />
     <InfoIcon
@@ -37,6 +39,11 @@ import Label from "./Label.vue";
 import {useTextareaAutosize, useVModel} from "@vueuse/core";
 import {ref, watch} from "vue";
 import InfoIcon from "./InfoIcon.vue";
+import {allowInputEvents, allowWrapperAttrs} from "@/global.js";
+
+defineOptions({
+  inheritAttrs: false
+})
 const wrapperEl = ref(null);
 const inputEl   = ref(null);
 const infoEl    = ref(null);

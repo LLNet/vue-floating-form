@@ -6,6 +6,7 @@
         (layout === 'floating-field' ? 'floating-field':'floating-default'),
         (info ? 'has-info':undefined)
       ]"
+      v-bind="allowWrapperAttrs($attrs)"
       ref="wrapperEl"
   >
     <button class="input" @click="pickColor">
@@ -17,6 +18,7 @@
         v-model="value"
         ref="inputEl"
         @change="emit('update:value', value)"
+        v-bind="allowInputEvents($attrs, 'textarea')"
     />
     <Label :label="label" />
     <div class="show-color" :style="'--show-color:' + value + ';'">&nbsp;</div>
@@ -35,6 +37,11 @@ import {useVModel} from "@vueuse/core";
 import Label from "./Label.vue";
 import {ref} from "vue";
 import InfoIcon from "./InfoIcon.vue";
+import {allowInputEvents, allowWrapperAttrs} from "@/global.js";
+
+defineOptions({
+  inheritAttrs: false
+})
 
 const wrapperEl = ref(null);
 const inputEl   = ref(null);
